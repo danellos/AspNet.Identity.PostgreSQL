@@ -40,7 +40,7 @@ namespace AspNet.Identity.PostgreSQL
         /// <returns></returns>
         public string GetUserId(string userName)
         {
-            //Due to PosrgreSQL's case sensitivity, we have another column for the user name in lowercase.
+            //Due to PostgreSQL's case sensitivity, we have another column for the user name in lowercase.
             if (userName != null)
                 userName = userName.ToLower();
 
@@ -84,7 +84,7 @@ namespace AspNet.Identity.PostgreSQL
         /// <returns></returns>
         public List<TUser> GetUserByName(string userName)
         {
-            //Due to PosrgreSQL's case sensitivity, we have another column for the user name in lowercase.
+            //Due to PostgreSQL's case sensitivity, we have another column for the user name in lowercase.
             if (userName != null)
                 userName = userName.ToLower();
 
@@ -115,7 +115,7 @@ namespace AspNet.Identity.PostgreSQL
         /// <returns></returns>
         public List<TUser> GetUserByEmail(string email)
         {
-            //Due to PosrgreSQL's case sensitivity, we have another column for the user name in lowercase.
+            //Due to PostgreSQL's case sensitivity, we have another column for the user name in lowercase.
             if (email != null)
                 email = email.ToLower();
 
