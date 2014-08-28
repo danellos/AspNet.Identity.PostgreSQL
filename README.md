@@ -3,7 +3,7 @@ AspNet.Identity.PostgreSQL
 
 This is an ASP.NET Identity provider for those who wish to use PostgreSQL as their database storage engine.
 
-To use this Indentity provider to the default ASP.NET MVC5 template project, follow these steps:
+To use this Indentity provider in the default ASP.NET MVC5 template project, follow these steps:
 
 
 1. Add the AspNet.Identity.PostgreSQL project as refernece to your main MVC project.
