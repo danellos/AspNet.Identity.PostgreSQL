@@ -4,8 +4,7 @@
   PRIMARY KEY ("Id")
 );
 
-CREATE TABLE "AspNetUsers"
-(
+CREATE TABLE "AspNetUsers" (
   "Id" character varying(128) NOT NULL,
   "UserName" character varying(256) NOT NULL,
   "UserNameLowercase" character varying(256) NOT NULL,
@@ -15,7 +14,7 @@ CREATE TABLE "AspNetUsers"
   "EmailLowercase" character varying(256) DEFAULT NULL::character varying,
   "EmailConfirmed" boolean NOT NULL DEFAULT false,
   PRIMARY KEY ("Id")
-)
+);
 
 CREATE TABLE "AspNetUserClaims" ( 
   "Id" serial NOT NULL,
