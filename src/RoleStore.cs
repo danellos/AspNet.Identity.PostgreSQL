@@ -37,8 +37,8 @@ namespace AspNet.Identity.PostgreSQL
         /// <param name="database"></param>
         public RoleStore(PostgreSQLDatabase database)
         {
-            Database = database;
-            roleTable = new RoleTable(database);
+            this.Database = database;
+            this.roleTable = new RoleTable(database);
         }
 
         public Task CreateAsync(TRole role)

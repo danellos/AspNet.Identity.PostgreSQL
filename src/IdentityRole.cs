@@ -10,7 +10,7 @@ namespace AspNet.Identity.PostgreSQL
         /// </summary>
         public IdentityRole()
         {
-            Id = Guid.NewGuid().ToString();
+            this.Id = Guid.NewGuid().ToString();
         }
         /// <summary>
         /// Constructor that takes a name as an argument.
@@ -19,13 +19,13 @@ namespace AspNet.Identity.PostgreSQL
         public IdentityRole(string name)
             : this()
         {
-            Name = name;
+            this.Name = name;
         }
 
         public IdentityRole(string name, string id)
         {
-            Name = name;
-            Id = id;
+            this.Name = name;
+            this.Id = id;
         }
 
         /// <summary>

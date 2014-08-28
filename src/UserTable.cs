@@ -71,7 +71,7 @@ namespace AspNet.Identity.PostgreSQL
                 user.PasswordHash = string.IsNullOrEmpty(row["PasswordHash"]) ? null : row["PasswordHash"];
                 user.SecurityStamp = string.IsNullOrEmpty(row["SecurityStamp"]) ? null : row["SecurityStamp"];
                 user.Email = string.IsNullOrEmpty(row["Email"]) ? null : row["Email"];
-                user.EmailConfirmed = row["EmailConfirmed"] == "1" ? true:false;
+                user.EmailConfirmed = row["EmailConfirmed"] == "True";
             }
 
             return user;
@@ -101,7 +101,7 @@ namespace AspNet.Identity.PostgreSQL
                 user.PasswordHash = string.IsNullOrEmpty(row["PasswordHash"]) ? null : row["PasswordHash"];
                 user.SecurityStamp = string.IsNullOrEmpty(row["SecurityStamp"]) ? null : row["SecurityStamp"];
                 user.Email = string.IsNullOrEmpty(row["Email"]) ? null : row["Email"];
-                user.EmailConfirmed = row["EmailConfirmed"] == "True" ? true : false;
+                user.EmailConfirmed = row["EmailConfirmed"] == "True";
                 users.Add(user);
             }
 
@@ -132,7 +132,7 @@ namespace AspNet.Identity.PostgreSQL
                 user.PasswordHash = string.IsNullOrEmpty(row["PasswordHash"]) ? null : row["PasswordHash"];
                 user.SecurityStamp = string.IsNullOrEmpty(row["SecurityStamp"]) ? null : row["SecurityStamp"];
                 user.Email = string.IsNullOrEmpty(row["Email"]) ? null : row["Email"];
-                user.EmailConfirmed = row["EmailConfirmed"] == "true" ? true : false;
+                user.EmailConfirmed = row["EmailConfirmed"] == "True";
                 users.Add(user);
             }
 

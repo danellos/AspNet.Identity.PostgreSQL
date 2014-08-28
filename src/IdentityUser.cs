@@ -13,7 +13,7 @@ namespace AspNet.Identity.PostgreSQL
         /// </summary>
         public IdentityUser()
         {
-            Id = Guid.NewGuid().ToString();
+            this.Id = Guid.NewGuid().ToString();
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace AspNet.Identity.PostgreSQL
         public IdentityUser(string userName)
             : this()
         {
-            UserName = userName;
+            this.UserName = userName;
         }
 
         /// <summary>

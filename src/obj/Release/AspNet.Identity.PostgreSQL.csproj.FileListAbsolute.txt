@@ -1,0 +1,5 @@
+E:\Development\GitHub\AspNet.Identity.PostgreSQL\src\bin\Release\AspNet.Identity.PostgreSQL.dll
+E:\Development\GitHub\AspNet.Identity.PostgreSQL\src\bin\Release\AspNet.Identity.PostgreSQL.pdb
+E:\Development\GitHub\AspNet.Identity.PostgreSQL\src\obj\Release\AspNet.Identity.PostgreSQL.csprojResolveAssemblyReference.cache
+E:\Development\GitHub\AspNet.Identity.PostgreSQL\src\obj\Release\AspNet.Identity.PostgreSQL.dll
+E:\Development\GitHub\AspNet.Identity.PostgreSQL\src\obj\Release\AspNet.Identity.PostgreSQL.pdb
