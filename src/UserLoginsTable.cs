@@ -20,7 +20,7 @@ namespace AspNet.Identity.PostgreSQL
         }
 
         /// <summary>
-        /// Deletes a login from a user in the UserLogins table.
+        /// Deletes a login record from a user in the UserLogins table.
         /// </summary>
         /// <param name="user">User to have login deleted.</param>
         /// <param name="login">Login to be deleted from user.</param>
@@ -37,7 +37,7 @@ namespace AspNet.Identity.PostgreSQL
         }
 
         /// <summary>
-        /// Deletes all Logins from a user in the UserLogins table.
+        /// Deletes all logins from a user in the UserLogins table.
         /// </summary>
         /// <param name="userId">The user's id.</param>
         /// <returns></returns>
@@ -51,7 +51,7 @@ namespace AspNet.Identity.PostgreSQL
         }
 
         /// <summary>
-        /// Inserts a new login in the AspNetUserLogins table.
+        /// Inserts a new login record in the AspNetUserLogins table.
         /// </summary>
         /// <param name="user">User to have new login added.</param>
         /// <param name="login">Login to be added.</param>
@@ -68,7 +68,7 @@ namespace AspNet.Identity.PostgreSQL
         }
 
         /// <summary>
-        /// Return a userId given a user's login.
+        /// Return a user ID given a user's login.
         /// </summary>
         /// <param name="userLogin">The user's login info.</param>
         /// <returns></returns>

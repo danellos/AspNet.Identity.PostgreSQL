@@ -55,7 +55,7 @@ namespace AspNet.Identity.PostgreSQL
         }
 
         /// <summary>
-        /// Inserts a new claim in AspNetUserClaims table.
+        /// Inserts a new claim record in AspNetUserClaims table.
         /// </summary>
         /// <param name="userClaim">User's claim to be added.</param>
         /// <param name="userId">User's Id.</param>
@@ -72,7 +72,7 @@ namespace AspNet.Identity.PostgreSQL
         }
 
         /// <summary>
-        /// Deletes a claim from a user.
+        /// Deletes a claim record from a user.
         /// </summary>
         /// <param name="user">The user to have a claim deleted.</param>
         /// <param name="claim">A claim to be deleted from user.</param>

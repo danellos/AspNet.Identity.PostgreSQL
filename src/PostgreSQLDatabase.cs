@@ -132,38 +132,6 @@ namespace AspNet.Identity.PostgreSQL
         }
 
         /// <summary>
-        /// Opens a connection if not open.
-        /// </summary>
-        private void OpenConnection()
-        {
-            var retries = 10;
-            if (_connection.State == ConnectionState.Open)
-            {
-                return;
-            }
-            else
-            {
-                while (retries >= 0 && _connection.State != ConnectionState.Open)
-                {
-                    _connection.Open();
-                    retries--;
-                    Thread.Sleep(50);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Closes a connection if open.
-        /// </summary>
-        public void CloseConnection()
-        {
-            if (_connection.State == ConnectionState.Open)
-            {
-                _connection.Close();
-            }
-        }
-
-        /// <summary>
         /// Creates a NpgsqlCommand object with the given parameters.
         /// </summary>
         /// <param name="commandText">The PostgreSQL query to execute.</param>
@@ -209,6 +177,38 @@ namespace AspNet.Identity.PostgreSQL
         {
             string value = QueryValue(commandText, parameters) as string;
             return value;
+        }
+
+        /// <summary>
+        /// Opens a connection if not open.
+        /// </summary>
+        private void OpenConnection()
+        {
+            var retries = 10;
+            if (_connection.State == ConnectionState.Open)
+            {
+                return;
+            }
+            else
+            {
+                while (retries >= 0 && _connection.State != ConnectionState.Open)
+                {
+                    _connection.Open();
+                    retries--;
+                    Thread.Sleep(50);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Closes the connection if it is open.
+        /// </summary>
+        public void CloseConnection()
+        {
+            if (_connection.State == ConnectionState.Open)
+            {
+                _connection.Close();
+            }
         }
 
         public void Dispose()

@@ -18,8 +18,6 @@ namespace AspNet.Identity.PostgreSQL
             _database = database;
         }
 
-        
-
         /// <summary>
         /// Returns a list of user's roles.
         /// </summary>
