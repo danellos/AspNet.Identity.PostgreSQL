@@ -534,7 +534,7 @@ namespace AspNet.Identity.PostgreSQL
             }
 
             List<TUser> result = userTable.GetUserByEmail(email) as List<TUser>;
-            if (result != null)
+            if (result != null && result.Count > 0)
             {
                 return Task.FromResult<TUser>(result[0]);
             }
