@@ -120,7 +120,7 @@ namespace AspNet.Identity.PostgreSQL
                 email = email.ToLower();
 
             List<TUser> users = new List<TUser>();
-            string commandText = "SELECT * FROM \"AspNetUsers\" WHERE \"UserEmailLowercase\" = @email";
+            string commandText = "SELECT * FROM \"AspNetUsers\" WHERE \"EmailLowercase\" = @email";
             Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@email", email } };
 
             var rows = _database.Query(commandText, parameters);
