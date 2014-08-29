@@ -533,10 +533,10 @@ namespace AspNet.Identity.PostgreSQL
                 throw new ArgumentNullException("email");
             }
 
-            TUser result = userTable.GetUserByEmail(email) as TUser;
+            List<TUser> result = userTable.GetUserByEmail(email) as List<TUser>;
             if (result != null)
             {
-                return Task.FromResult<TUser>(result);
+                return Task.FromResult<TUser>(result[0]);
             }
 
             return Task.FromResult<TUser>(null);
