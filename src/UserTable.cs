@@ -44,7 +44,7 @@ namespace AspNet.Identity.PostgreSQL
             if (userName != null)
                 userName = userName.ToLower();
 
-            string commandText = "SELECT \"Id\" FROM \"AspNetUsers\" WHERE \"UserNameLowercase\" = @name";
+            string commandText = "SELECT \"Id\" FROM \"AspNetUsers\" WHERE LOWER(\"UserName\") = @name";
             Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@name", userName } };
 
             return _database.GetStrValue(commandText, parameters);
@@ -89,7 +89,7 @@ namespace AspNet.Identity.PostgreSQL
                 userName = userName.ToLower();
 
             List<TUser> users = new List<TUser>();
-            string commandText = "SELECT * FROM \"AspNetUsers\" WHERE \"UserNameLowercase\" = @name";
+            string commandText = "SELECT * FROM \"AspNetUsers\" WHERE LOWER(\"UserName\") = @name";
             Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@name", userName } };
 
             var rows = _database.Query(commandText, parameters);
@@ -120,7 +120,7 @@ namespace AspNet.Identity.PostgreSQL
                 email = email.ToLower();
 
             List<TUser> users = new List<TUser>();
-            string commandText = "SELECT * FROM \"AspNetUsers\" WHERE \"EmailLowercase\" = @email";
+            string commandText = "SELECT * FROM \"AspNetUsers\" WHERE LOWER(\"Email\") = @email";
             Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@email", email } };
 
             var rows = _database.Query(commandText, parameters);
@@ -200,8 +200,8 @@ namespace AspNet.Identity.PostgreSQL
 
             string commandText = @"
             INSERT INTO ""AspNetUsers""(""Id"", ""UserName"", ""PasswordHash"", ""SecurityStamp"", ""Email"", 
-                                        ""EmailConfirmed"", ""UserNameLowercase"", ""EmailLowercase"")
-            VALUES (@id, @name, @pwdHash, @SecStamp, @email, @emailconfirmed, @nameLowercase, @emailLowercase);";
+                                        ""EmailConfirmed"")
+            VALUES (@id, @name, @pwdHash, @SecStamp, @email, @emailconfirmed);";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@name", user.UserName);
@@ -210,8 +210,6 @@ namespace AspNet.Identity.PostgreSQL
             parameters.Add("@SecStamp", user.SecurityStamp);
             parameters.Add("@email", user.Email);
             parameters.Add("@emailconfirmed", user.EmailConfirmed);
-            parameters.Add("@emailLowercase", lowerCaseEmail);
-            parameters.Add("@nameLowercase", user.UserName.ToLower());
 
             return _database.Execute(commandText, parameters);
         }
@@ -252,7 +250,7 @@ namespace AspNet.Identity.PostgreSQL
             string commandText = @"
                 UPDATE ""AspNetUsers""
                    SET ""UserName"" = @userName, ""PasswordHash"" = @pswHash, ""SecurityStamp"" = @secStamp, ""Email""= @email, 
-                       ""EmailConfirmed"" = @emailconfirmed, ""UserNameLowercase"" = @nameLowercase, ""EmailLowercase""= @emailLowercase
+                       ""EmailConfirmed"" = @emailconfirmed,
                  WHERE ""Id"" = @userId;";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -262,8 +260,6 @@ namespace AspNet.Identity.PostgreSQL
             parameters.Add("@userId", user.Id);
             parameters.Add("@email", user.Email);
             parameters.Add("@emailconfirmed", user.EmailConfirmed);
-            parameters.Add("@emailLowercase", lowerCaseEmail);
-            parameters.Add("@nameLowercase", user.UserName.ToLower());
 
             return _database.Execute(commandText, parameters);
         }

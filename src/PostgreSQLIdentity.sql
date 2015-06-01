@@ -7,11 +7,9 @@
 CREATE TABLE "AspNetUsers" (
   "Id" character varying(128) NOT NULL,
   "UserName" character varying(256) NOT NULL,
-  "UserNameLowercase" character varying(256) NOT NULL,
   "PasswordHash" character varying(256),
   "SecurityStamp" character varying(256),
   "Email" character varying(256) DEFAULT NULL::character varying,
-  "EmailLowercase" character varying(256) DEFAULT NULL::character varying,
   "EmailConfirmed" boolean NOT NULL DEFAULT false,
   PRIMARY KEY ("Id")
 );
