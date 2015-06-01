@@ -63,7 +63,7 @@ namespace AspNet.Identity.PostgreSQL
         /// <returns></returns>
         public int Insert(IdentityUser user, string roleId)
         {
-            string commandText = "INSERT INTO \"UserRoles\" (\"UserId\", \"RoleId\") VALUES (@userId, @roleId)";
+            string commandText = "INSERT INTO \"AspNetUserRoles\" (\"UserId\", \"RoleId\") VALUES (@userId, @roleId)";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("userId", user.Id);
             parameters.Add("roleId", roleId);
