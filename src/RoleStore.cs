@@ -18,7 +18,8 @@ namespace AspNet.Identity.PostgreSQL
         {
             get
             {
-                throw new NotImplementedException();
+                var result = roleTable.GetAllRoleNames() as System.Collections.Generic.List<TRole>;                
+                return result.AsQueryable();
             }
         }
 
