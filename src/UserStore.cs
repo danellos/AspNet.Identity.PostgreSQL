@@ -31,7 +31,9 @@ namespace AspNet.Identity.PostgreSQL
         {
             get
             {
-                throw new NotImplementedException();
+                //ToDo: Best performance
+                return userTable.GetAllUsers().AsQueryable();
+                //throw new NotImplementedException();
             }
         }
 
@@ -387,13 +389,31 @@ namespace AspNet.Identity.PostgreSQL
 
         /// <summary>
         /// Removes a user from a role.
+        /// 
+        /// Created by Slawomir Figiel
         /// </summary>
         /// <param name="user">TUser object.</param>
         /// <param name="role">Role string.</param>
         /// <returns></returns>
         public Task RemoveFromRoleAsync(TUser user, string role)
         {
-            throw new NotImplementedException();
+            if (user == null)
+            {
+                throw new ArgumentNullException("user");
+            }
+
+            if (role == null)
+            {
+                throw new ArgumentNullException("login");
+            }
+
+            string roleId = roleTable.GetRoleId(role);
+            if (!string.IsNullOrEmpty(roleId))
+            {
+                userRolesTable.Delete(user.Id, roleId);
+            }
+
+            return Task.FromResult<object>(null);
         }
 
         /// <summary>
