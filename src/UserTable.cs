@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace AspNet.Identity.PostgreSQL
@@ -51,10 +51,33 @@ namespace AspNet.Identity.PostgreSQL
         }
 
         /// <summary>
-        /// Returns an TUser given the user's id.
+        /// Returns all users. Created by: Slawomir Figiel
         /// </summary>
-        /// <param name="userId">The user's id.</param>
+        /// <param name="userId"></param>
         /// <returns></returns>
+        /// 
+        public List<TUser> GetAllUsers()
+        {
+            List<TUser> users = new List<TUser>();
+
+            string commandText = "SELECT * FROM \"AspNetUsers\"";
+            var rows = _database.Query(commandText, new Dictionary<string, object>());
+
+            foreach (var row in rows)
+            {
+                TUser user = (TUser)Activator.CreateInstance(typeof(TUser));
+                user.Id = row["Id"];
+                user.UserName = row["UserName"];
+                user.PasswordHash = string.IsNullOrEmpty(row["PasswordHash"]) ? null : row["PasswordHash"];
+                user.SecurityStamp = string.IsNullOrEmpty(row["SecurityStamp"]) ? null : row["SecurityStamp"];
+                user.Email = string.IsNullOrEmpty(row["Email"]) ? null : row["Email"];
+                user.EmailConfirmed = row["EmailConfirmed"] == "True";
+                users.Add(user);
+            }
+
+            return users;
+        }
+
         public TUser GetUserById(string userId)
         {
             TUser user = null;
@@ -247,11 +270,15 @@ namespace AspNet.Identity.PostgreSQL
         {
             var lowerCaseEmail = user.Email == null ? null : user.Email.ToLower();
 
+<<<<<<< HEAD
             string commandText = @"
                 UPDATE ""AspNetUsers""
                    SET ""UserName"" = @userName, ""PasswordHash"" = @pswHash, ""SecurityStamp"" = @secStamp, ""Email""= @email, 
                        ""EmailConfirmed"" = @emailconfirmed
                  WHERE ""Id"" = @userId;";
+=======
+            string commandText = "UPDATE \"AspNetUsers\" SET \"UserName\" = @userName, \"PasswordHash\" = @pswHash, \"SecurityStamp\" = @secStamp, \"Email\"= @email, \"EmailConfirmed\" = @emailconfirmed WHERE \"Id\" = @userId;";
+>>>>>>> 77f12c854e21897f2de3bbc37665863593274422
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@userName", user.UserName);
