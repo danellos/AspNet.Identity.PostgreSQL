@@ -270,15 +270,13 @@ namespace AspNet.Identity.PostgreSQL
         {
             var lowerCaseEmail = user.Email == null ? null : user.Email.ToLower();
 
-<<<<<<< HEAD
-            string commandText = @"
-                UPDATE ""AspNetUsers""
-                   SET ""UserName"" = @userName, ""PasswordHash"" = @pswHash, ""SecurityStamp"" = @secStamp, ""Email""= @email, 
-                       ""EmailConfirmed"" = @emailconfirmed
-                 WHERE ""Id"" = @userId;";
-=======
+//            string commandText = @"
+//                UPDATE ""AspNetUsers""
+//                   SET ""UserName"" = @userName, ""PasswordHash"" = @pswHash, ""SecurityStamp"" = @secStamp, ""Email""= @email, 
+//                       ""EmailConfirmed"" = @emailconfirmed
+//                 WHERE ""Id"" = @userId;";
+
             string commandText = "UPDATE \"AspNetUsers\" SET \"UserName\" = @userName, \"PasswordHash\" = @pswHash, \"SecurityStamp\" = @secStamp, \"Email\"= @email, \"EmailConfirmed\" = @emailconfirmed WHERE \"Id\" = @userId;";
->>>>>>> 77f12c854e21897f2de3bbc37665863593274422
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@userName", user.UserName);

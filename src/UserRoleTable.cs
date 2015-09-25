@@ -28,15 +28,15 @@ namespace AspNet.Identity.PostgreSQL
         public List<string> FindByUserId(string userId)
         {
             List<string> roles = new List<string>();
-<<<<<<< HEAD
+
             //TODO: This probably does not work, and may need testing.
             //string commandText = "SELECT \"AspNetRoles\".\"Name\" FROM \"AspNetUsers\", \"AspNetRoles\", \"AspNetUserRoles\" ";
             //       commandText += "WHERE \"AspNetUsers\".\"Id\" = \"AspNetUserRoles\".\"UserId\" AND \"AspNetUserRoles\".\"RoleId\" = \"AspNetRoles\".\"Id\";";
-            string commandText = "SELECT \"Name\"" + " FROM \"AspNetRoles\" " + " INNER JOIN \"AspNetUserRoles\" ON \"AspNetUserRoles\".\"RoleId\" = \"AspNetRoles\".\"Id\" " 
-                                    + " WHERE \"UserId\" = @userId";
-=======
+            //string commandText = "SELECT \"Name\"" + " FROM \"AspNetRoles\" " + " INNER JOIN \"AspNetUserRoles\" ON \"AspNetUserRoles\".\"RoleId\" = \"AspNetRoles\".\"Id\" " 
+            //                        + " WHERE \"UserId\" = @userId";
+
             string commandText = "SELECT \"AspNetRoles\".\"Name\" FROM \"AspNetRoles\" JOIN \"AspNetUserRoles\" ON \"AspNetUserRoles\".\"RoleId\" = \"AspNetRoles\".\"Id\" WHERE \"AspNetUserRoles\".\"UserId\" = @userId;";
->>>>>>> 77f12c854e21897f2de3bbc37665863593274422
+
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@userId", userId);
 
