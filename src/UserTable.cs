@@ -250,7 +250,7 @@ namespace AspNet.Identity.PostgreSQL
             string commandText = @"
                 UPDATE ""AspNetUsers""
                    SET ""UserName"" = @userName, ""PasswordHash"" = @pswHash, ""SecurityStamp"" = @secStamp, ""Email""= @email, 
-                       ""EmailConfirmed"" = @emailconfirmed,
+                       ""EmailConfirmed"" = @emailconfirmed
                  WHERE ""Id"" = @userId;";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
