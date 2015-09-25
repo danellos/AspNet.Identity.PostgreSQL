@@ -20,17 +20,23 @@ namespace AspNet.Identity.PostgreSQL
 
         /// <summary>
         /// Returns a list of user's roles.
+        /// 
+        /// Correct by Slawomir Figiel
         /// </summary>
         /// <param name="userId">The user's id.</param>
         /// <returns></returns>
         public List<string> FindByUserId(string userId)
         {
             List<string> roles = new List<string>();
+<<<<<<< HEAD
             //TODO: This probably does not work, and may need testing.
             //string commandText = "SELECT \"AspNetRoles\".\"Name\" FROM \"AspNetUsers\", \"AspNetRoles\", \"AspNetUserRoles\" ";
             //       commandText += "WHERE \"AspNetUsers\".\"Id\" = \"AspNetUserRoles\".\"UserId\" AND \"AspNetUserRoles\".\"RoleId\" = \"AspNetRoles\".\"Id\";";
             string commandText = "SELECT \"Name\"" + " FROM \"AspNetRoles\" " + " INNER JOIN \"AspNetUserRoles\" ON \"AspNetUserRoles\".\"RoleId\" = \"AspNetRoles\".\"Id\" " 
                                     + " WHERE \"UserId\" = @userId";
+=======
+            string commandText = "SELECT \"AspNetRoles\".\"Name\" FROM \"AspNetRoles\" JOIN \"AspNetUserRoles\" ON \"AspNetUserRoles\".\"RoleId\" = \"AspNetRoles\".\"Id\" WHERE \"AspNetUserRoles\".\"UserId\" = @userId;";
+>>>>>>> 77f12c854e21897f2de3bbc37665863593274422
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@userId", userId);
 
@@ -44,13 +50,30 @@ namespace AspNet.Identity.PostgreSQL
         }
 
         /// <summary>
+        /// Deletes role from a user in the AspNetUserRoles table.
+        /// </summary>
+        /// <param name="userId">The user's id.</param>
+        /// <returns></returns>
+        public int Delete(string userId, string role)
+        {
+            string commandText = "DELETE FROM \"AspNetUserRoles\" WHERE \"UserId\" = @userId AND \"RoleId\" = @Role;";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("UserId", userId);
+            parameters.Add("Role", role);
+
+            return _database.Execute(commandText, parameters);
+        }
+
+        /// <summary>
         /// Deletes all roles from a user in the AspNetUserRoles table.
+        /// 
+        /// Corrected by Slawomir Figiel
         /// </summary>
         /// <param name="userId">The user's id.</param>
         /// <returns></returns>
         public int Delete(string userId)
         {
-            string commandText = "DELETE FROM \"AspNetRoles\" WHERE \"UserId\" = @userId";
+            string commandText = "DELETE FROM \"AspNetUserRoles\" WHERE \"UserId\" = @userId";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("UserId", userId);
 

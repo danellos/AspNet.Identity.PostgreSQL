@@ -49,6 +49,26 @@ namespace AspNet.Identity.PostgreSQL
         }
 
         /// <summary>
+        /// Returns all role names.
+        /// 
+        /// Created by: Slawomir Figiel
+        /// </summary>
+        /// <returns>Role name.</returns>
+        public List<IdentityRole> GetAllRoleNames()
+        {
+            List<IdentityRole> roles = new List<IdentityRole>();
+            string commandText = "SELECT * FROM \"AspNetRoles\"";
+            var rows = _database.Query(commandText, new Dictionary<string, object>());
+
+            foreach (var row in rows)
+            {
+                IdentityRole r = new IdentityRole(row["Name"], row["Id"]);
+                roles.Add(r);
+            }
+            return roles;
+        }
+
+        /// <summary>
         /// Returns a role name given the roleId.
         /// </summary>
         /// <param name="roleId">The role Id.</param>
