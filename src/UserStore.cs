@@ -577,7 +577,7 @@ namespace AspNet.Identity.PostgreSQL
 
         public Task<int> IncrementAccessFailedCountAsync(TUser user)
         {
-            throw new NotImplementedException();
+            return Task<Int32>.FromResult<Int32>(1);
         }
 
         public Task ResetAccessFailedCountAsync(TUser user)
