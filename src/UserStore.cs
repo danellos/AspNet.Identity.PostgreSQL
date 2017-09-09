@@ -17,7 +17,9 @@ namespace AspNet.Identity.PostgreSQL
         IUserSecurityStampStore<TUser>,
         IQueryableUserStore<TUser>,
         IUserEmailStore<TUser>,
-        IUserStore<TUser>
+        IUserStore<TUser>,
+        IUserLockoutStore<TUser,string>,
+        IUserTwoFactorStore<TUser, string>
         where TUser : IdentityUser
     {
         private UserTable<TUser> userTable;
@@ -25,6 +27,7 @@ namespace AspNet.Identity.PostgreSQL
         private UserRolesTable userRolesTable;
         private UserClaimsTable userClaimsTable;
         private UserLoginsTable userLoginsTable;
+   
         public PostgreSQLDatabase Database { get; private set; }
 
         public IQueryable<TUser> Users
@@ -562,5 +565,60 @@ namespace AspNet.Identity.PostgreSQL
             return Task.FromResult<TUser>(null);
         }
 
+        public Task<DateTimeOffset> GetLockoutEndDateAsync(TUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SetLockoutEndDateAsync(TUser user, DateTimeOffset lockoutEnd)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> IncrementAccessFailedCountAsync(TUser user)
+        {
+            return Task<Int32>.FromResult<Int32>(1);
+        }
+
+        public Task ResetAccessFailedCountAsync(TUser user)
+        {
+            return Task.FromResult(false);
+           
+        }
+
+        public Task<int> GetAccessFailedCountAsync(TUser user)
+        {
+            return Task<Int32>.FromResult<Int32>(1);
+        }
+
+        public Task<bool> GetLockoutEnabledAsync(TUser user)
+        {
+            return Task<bool>.Run<bool>(() =>
+            {
+                return false;
+            });
+
+        }
+
+        public Task SetLockoutEnabledAsync(TUser user, bool enabled)
+        {
+            return Task.Run(() =>
+            {
+
+            });
+        }
+
+        public Task SetTwoFactorEnabledAsync(TUser user, bool enabled)
+        {
+            return Task.FromResult(false);
+        }
+
+        public Task<bool> GetTwoFactorEnabledAsync(TUser user)
+        {
+            return Task<bool>.Run<bool>(() =>
+            {
+                return false;
+            });
+        }
     }
 }
