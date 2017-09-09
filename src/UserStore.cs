@@ -361,7 +361,7 @@ namespace AspNet.Identity.PostgreSQL
             return Task.FromResult<IList<string>>(null);
         }
 
-        /// <summary>
+        /// <summary> 
         /// Verifies if a user is in a role.
         /// </summary>
         /// <param name="user">TUser object.</param>
@@ -392,8 +392,6 @@ namespace AspNet.Identity.PostgreSQL
 
         /// <summary>
         /// Removes a user from a role.
-        /// 
-        /// Created by Slawomir Figiel
         /// </summary>
         /// <param name="user">TUser object.</param>
         /// <param name="role">Role string.</param>
